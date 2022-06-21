@@ -3,19 +3,23 @@ h1{
     font-family: 'Times New Roman', Times, serif;
 }
 
-.login{
+.register{
     display: flex;
     justify-content: center;
     flex-direction: column;
     width: 30%;
 }
 
-.loginName{
+.regName{
     margin-top: 20px;
     border-radius: 10px;
 }
 
-.passwdLogin{
+.passwdReg{
+    margin-top: 20px;
+    border-radius: 10px;
+}
+.confirmReg{
     margin-top: 20px;
     border-radius: 10px;
 }
@@ -26,7 +30,7 @@ h1{
 
 }
 
-.toReg{
+.toLogin{
     text-decoration: none;
     color: black;
     margin-top: 10px;
