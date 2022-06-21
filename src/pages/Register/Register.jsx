@@ -4,6 +4,7 @@ import "./style.scss"
 
   const Register = () => {
         
+  
     const [state, setState] = useState({
       name: "",
       passwd: "",
@@ -12,6 +13,12 @@ import "./style.scss"
   
     const handleSubmit = (e) => {
       e.preventDefault();
+      const {name, passwd} = state;
+      const user = {
+        name,
+        passwd
+      }
+      localStorage.setItem ('user',  JSON.stringify(user));
       console.log(state);
     };
   
@@ -32,6 +39,7 @@ import "./style.scss"
         <button type="submit" className="submBttn">Submit</button>
       </form>
       <Link className='toLogin' to={"/login"}>Sign in</Link>
+      <Link className='toHome' to={"/"}>Home</Link>
     </>
   )
 }

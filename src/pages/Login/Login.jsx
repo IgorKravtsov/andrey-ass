@@ -7,13 +7,21 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // console.log(name, passwdLogin);
+    const checkUser = localStorage.getItem('user');
+    const checkObj = JSON.parse(checkUser);
+    if (checkObj.name === name && checkObj.passwd === passwdLogin) {
+      alert("Логин верный");
+    } 
+    else {
+      alert("Логин или пароль неверный");
+    }
     console.log({
       name,
       passwdLogin
     });
+    
   };
-
+  
   const handleOnChange = (e, setFunc) => {
     setFunc(e.target.value);
   };
@@ -28,6 +36,7 @@ const Login = () => {
         <button type="submit" className="submBttn">Submit</button>
       </form>
       <Link className='toReg' to={'/register'}>Registration</Link>
+      <Link className='toHome' to={"/"}>Home</Link>
     </>
   )
 }
