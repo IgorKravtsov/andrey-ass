@@ -27,7 +27,7 @@ const Login = () => {
   };
   return (
     <>
-      <h1>LOGIN</h1>
+      <div className='div2'><h1>LOGIN</h1>
       <form onSubmit={handleSubmit}  className="login">
         <input value={name}
         onChange={(e) => handleOnChange(e,setName)} required type="text" className="loginName" placeholder="Enter your name" />
@@ -37,6 +37,7 @@ const Login = () => {
       </form>
       <Link className='toReg' to={'/register'}>Registration</Link>
       <Link className='toHome' to={"/"}>Home</Link>
+      </div>
     </>
   )
 }

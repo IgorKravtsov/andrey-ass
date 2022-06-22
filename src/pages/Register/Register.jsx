@@ -31,6 +31,7 @@ import "./style.scss"
     };
   return (
     <>
+      <div className='div1'>
       <h1>REGISTER</h1>
       <form onSubmit={handleSubmit} className="register">
         <input name="name" value={state.name} onChange={handleOnChange} type="text" className="regName" placeholder="Enter your name" />
@@ -39,7 +40,7 @@ import "./style.scss"
         <button type="submit" className="submBttn">Submit</button>
       </form>
       <Link className='toLogin' to={"/login"}>Sign in</Link>
-      <Link className='toHome' to={"/"}>Home</Link>
+      <Link className='toHome' to={"/"}>Home</Link></div>
     </>
   )
 }
