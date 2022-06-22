@@ -1,32 +1,30 @@
 import React, {useState} from 'react'
-import { Link } from "react-router-dom"
+import { NewApi } from '../../api/new api/new-api'
+import { Link, useNavigate } from "react-router-dom"
 import "./style.scss"
 
   const Register = () => {
-        
+    const navigate = useNavigate();
   
     const [state, setState] = useState({
-      name: "",
-      passwd: "",
+      email: "",
+      password: "",
       repeatPasswd: ""
     });
   
-    const handleSubmit = (e) => {
+    const  handleSubmit = async (e) => {
       e.preventDefault();
-      const {name, passwd} = state;
-      const user = {
-        name,
-        passwd
-      }
-      localStorage.setItem ('user',  JSON.stringify(user));
-      console.log(state);
+      const {email, password} = state;
+      const data = await NewApi.Register(email,password);
+      localStorage.setItem('user',data.token);
+      navigate('/people-page', {replace: true});
     };
   
     const handleOnChange = (e) => {
-      const zalupa = e.target.name;
+      const item = e.target.name;
       setState({
         ...state,
-        [zalupa]: e.target.value
+        [item]: e.target.value
       });
     };
   return (
@@ -34,13 +32,12 @@ import "./style.scss"
       <div className='div1'>
       <h1>REGISTER</h1>
       <form onSubmit={handleSubmit} className="register">
-        <input name="name" value={state.name} onChange={handleOnChange} type="text" className="regName" placeholder="Enter your name" />
-        <input name="passwd" value={state.passwd} onChange={handleOnChange} type="password" className="passwdReg" placeholder="Enter your password" />
+        <input name="email" value={state.email} onChange={handleOnChange} type="email" className="regName" placeholder="Enter your email" />
+        <input name="password" value={state.password} onChange={handleOnChange} type="password" className="passwdReg" placeholder="Enter your password" />
         <input name="repeatPasswd" value={state.repeatPasswd} onChange={handleOnChange} type="password" className="confirmReg" placeholder="Confirm your password" />
         <button type="submit" className="submBttn">Submit</button>
       </form>
-      <Link className='toLogin' to={"/login"}>Sign in</Link>
-      <Link className='toHome' to={"/"}>Home</Link></div>
+    </div>
     </>
   )
 }
