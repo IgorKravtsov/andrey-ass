@@ -1,10 +1,11 @@
 import React from 'react'
 import { Link } from "react-router-dom"
+import Header from '../../components/Header/Header'
+import "./style.scss"
 function Home (){
     return (
         <> 
-          <Link className='toLogin' to={"/login"}>Sign in</Link>
-          <Link className='toReg' to={"/register"}>Registration</Link>
+        
         </>
     )
 }

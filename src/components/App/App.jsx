@@ -4,18 +4,22 @@ import './App.scss'
 import Login from '../../pages/Login/Login'
 import Register from '../../pages/Register/Register'
 import Home from '../../pages/Home/Home'
+import PeoplePage from '../../pages/People-page/PeoplePage'
 import {BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+import Header from '../Header/Header'
 
 function App() {
   const [currPage, setCurrPage] = useState('login')
 
   return (
-   <Router>   
+   <Router>
+    <Header/>
     <main className='App'>   
       <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path="/login" element={<Login/>}/>
         <Route path="/register" element={<Register/>}/>
+        <Route path="/people-page" element={<PeoplePage/>}/>
       </Routes>
  {/* <div className='App'>
  <div style={{ display: 'flex' }}>

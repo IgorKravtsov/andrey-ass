@@ -1,25 +1,33 @@
 import React, {useState} from 'react'
-import { Link } from "react-router-dom"
+import { NewApi } from '../../api/new api/new-api'
+import { Link, useNavigate } from "react-router-dom"
+import { loginFormConfig } from '../../form-configs'
+import FormBuilder from '../../components/FormBuilder/FormBuilder'
 import "./style.scss"
+
+
 const Login = () => {
   const [name, setName] = useState("");
   const [passwdLogin, setpasswdLogin] = useState("");
 
-  const handleSubmit = (e) => {
+  const [isNameValid, setIsNameValid] = useState(true);
+  const [isPasswordValid, setisPasswordValid] = useState(true);
+  
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    const checkUser = localStorage.getItem('user');
-    const checkObj = JSON.parse(checkUser);
-    if (checkObj.name === name && checkObj.passwd === passwdLogin) {
-      alert("Логин верный");
-    } 
-    else {
-      alert("Логин или пароль неверный");
+    //validation
+    if(name.length > 22 || name.length < 3){
+      setIsNameValid(false)
     }
-    console.log({
-      name,
-      passwdLogin
-    });
-    
+    try {
+      const data = await NewApi.Login(name,passwdLogin);
+      localStorage.setItem('user', data.token);
+      navigate("/people-page", {replace: true}); 
+    } catch (error) {
+      setisPasswordValid(false)
+    }
   };
   
   const handleOnChange = (e, setFunc) => {
@@ -27,16 +35,19 @@ const Login = () => {
   };
   return (
     <>
-      <h1>LOGIN</h1>
+      
+      <div className='div2'><h1>LOGIN</h1>
+      <FormBuilder config={loginFormConfig} />
       <form onSubmit={handleSubmit}  className="login">
         <input value={name}
-        onChange={(e) => handleOnChange(e,setName)} required type="text" className="loginName" placeholder="Enter your name" />
+        onChange={(e) => handleOnChange(e,setName)} required type="email" className="loginName" placeholder="Enter your email" />
+        {!isNameValid && <p>Invalid email</p>}
         <input value={passwdLogin}
-        onChange={(e) => handleOnChange(e,setpasswdLogin)} required type="password" className="passwdLogin" placeholder="Enter your password" />
+        onChange={(e) => handleOnChange(e,setpasswdLogin)} onBlur={() => setisPasswordValid(true)} required type="password" className="passwdLogin" placeholder="Enter your password" />
+        {!isPasswordValid && <p>Invalid password</p>}
         <button type="submit" className="submBttn">Submit</button>
       </form>
-      <Link className='toReg' to={'/register'}>Registration</Link>
-      <Link className='toHome' to={"/"}>Home</Link>
+      </div>
     </>
   )
 }

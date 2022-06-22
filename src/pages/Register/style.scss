@@ -38,6 +38,19 @@ h1{
 
 .toHome{
     text-decoration: none;
-    color: red;
+    color: black;
     margin-top: 10px;
+}
+
+.toReg{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.div1{
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 }
