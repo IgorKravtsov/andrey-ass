@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import styles from './style.module.scss'
 import { Link } from 'react-router-dom'
-
 import { SwapiApi } from '../../api/swapi/swapi-api'
+
 
 function PeoplePage() {
   const [appState, setAppState] = useState([])
@@ -38,6 +38,7 @@ function PeoplePage() {
           <li className={styles.height}>Height:{item.height}</li>
           <li className={styles.mass}>Mass:{item.mass}</li>
           <li className={styles.films}>Films:{item.films}</li>
+          <Link to={'/people-page/person/'} className={styles.person}>Open more...</Link>
         </div>
       </ul>
      
