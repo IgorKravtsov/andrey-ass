@@ -6,6 +6,7 @@ import Register from '../../pages/Register/Register'
 import Home from '../../pages/Home/Home'
 import PeoplePage from '../../pages/People-page/PeoplePage'
 import PersonInfo from '../../pages/PersonInfo/PersonInfo'
+import ToDo from '../../pages/ToDo/ToDo'
 import {BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Header from '../Header/Header'
 
@@ -22,6 +23,7 @@ function App() {
         <Route path="/register" element={<Register/>}/>
         <Route path="/people-page" element={<PeoplePage/>}/>
         <Route path="/people-page/person" element={<PersonInfo/>}/>
+        <Route path="/todos/:todoId" element={<ToDo/>}/>
       </Routes>
  {/* <div className='App'>
  <div style={{ display: 'flex' }}>
