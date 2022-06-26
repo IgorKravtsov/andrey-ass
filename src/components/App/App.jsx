@@ -7,6 +7,7 @@ import Home from '../../pages/Home/Home'
 import PeoplePage from '../../pages/People-page/PeoplePage'
 import PersonInfo from '../../pages/PersonInfo/PersonInfo'
 import ToDo from '../../pages/ToDo/ToDo'
+import ToDoList from '../../pages/ToDoList/ToDoList'
 import {BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import Header from '../Header/Header'
 
@@ -24,6 +25,7 @@ function App() {
         <Route path="/people-page" element={<PeoplePage/>}/>
         <Route path="/people-page/person" element={<PersonInfo/>}/>
         <Route path="/todos/:todoId" element={<ToDo/>}/>
+        <Route path="/todos" element={<ToDoList/>}/>
       </Routes>
  {/* <div className='App'>
  <div style={{ display: 'flex' }}>

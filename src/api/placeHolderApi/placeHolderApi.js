@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export class PlaceHolderApi{
+export class PlaceHolderApi {
     
    static baseUrl = 'https://jsonplaceholder.typicode.com';
 
@@ -11,12 +11,19 @@ export class PlaceHolderApi{
 
    }
 
-   static async exacToDo (){
+   static async exacToDo (id){
 
-      const { data } = await axios.get(`${PlaceHolderApi.baseUrl}/users`) 
-      return data;
+      const { data } = await axios.get(`${PlaceHolderApi.baseUrl}/todos/${id}`) 
+      // console.log(data);
+      return data; 
+      
+      // { id: Number; title: string; completed: Boolean; userId: number }
       
    }
 
+   static async getUser (userId) {
+      const { data } = await axios.get(`${PlaceHolderApi.baseUrl}/users/${userId}`)
+      return data;
+   }
 
 }

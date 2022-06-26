@@ -9,6 +9,7 @@ function Header() {
             <NavLink className={styles.navLink} to={'/register'}>Registration</NavLink>
             <NavLink className={styles.navLink} to={"/login"}>Sign in</NavLink>
             <NavLink className={styles.navLink} to={"/people-page"}>People Page</NavLink>
+            <NavLink className={styles.navLink} to={"/todos"}>To Do List</NavLink>
         </nav>
       </header>
     )

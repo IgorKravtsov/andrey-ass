@@ -8,38 +8,11 @@ import { setTodos } from '../../redux/sliceToDo'
 
 
 function Home (){
-    const {value} = useSelector(state => state.counter)
-    const {todosvalue} = useSelector(state => state.todos)
-    const dispatch = useDispatch()
 
-    const getListToDos = async () =>{
-        const todosFromApi = await PlaceHolderApi.getToDos();
-        dispatch(setTodos(todosFromApi))
-    } 
-
-    
-
-    useEffect(() => {
-        getListToDos()
-      }, [])
 
     return (
         <> 
-        <h1>{value}</h1>
-        <div className={styles.listToDo}>{
-            todosvalue.map((item) => {
-                return (
-                    <>
-                    <div>{item.userId}</div>
-                    <div>{item.id}</div>
-                    <div>{item.title}</div>
-                    <input type="checkbox" checked={item.completed} ></input>
-                    <Link to={`/todos/${item.id}`} className={styles.person}>Open more...</Link>
-                    </>
-                   
-                )
-            })
-        }</div>
+       
         </>
     )
 }
