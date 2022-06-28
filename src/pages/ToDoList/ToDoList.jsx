@@ -29,11 +29,13 @@ function ToDoList (){
             todosvalue.map((item) => {
                 return (
                     <>
+                    <div className={styles.blockUser}>
                     <div>UserID: {item.userId}</div>
                     <div>ID: {item.id}</div>
                     <div>Title: {item.title}</div>
                     <input type="checkbox" checked={item.completed}/>
                     <Link to={`/todos/${item.id}`} className={styles.person}>Open more...</Link>
+                    </div>
                     </>
                    
                 )

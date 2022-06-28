@@ -30,6 +30,10 @@ function PeoplePage() {
     console.log(appState)
   }, [appState])
 
+  const handleOnClick = () => {
+    dispatch(setItemInCart())
+  }
+
   const handleClickPlus = () => {
     dispatch(increment())
   }
@@ -56,6 +60,7 @@ function PeoplePage() {
               <li className={styles.mass}>Mass:{item.mass}</li>
               <li className={styles.films}>Films:{item.films}</li>
               <Link to={'/people-page/person/'} className={styles.person}>Open more...</Link>
+              <button onClick={() => {}}>Add to cart</button>
             </div>
           </ul>
         )
